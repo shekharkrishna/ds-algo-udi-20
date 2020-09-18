@@ -37,7 +37,7 @@ node0.set_left_child(node1) # node 0 will point to node 1
 
 print("Getting the address of the leftchild that Apple or node0 is pointing to")
 leftChild = node0.get_left_child() # First instinct
-leftChild = node0.left # Powerful way to get the left pointer address 
+#leftChild = node0.left # Powerful way to get the left pointer address 
 print(leftChild)
 
 print("Getting the value of the left child pointed to")

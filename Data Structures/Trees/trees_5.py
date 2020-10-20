@@ -17,10 +17,35 @@ class Tree(object): # class inherits from object
         return self.root
 
     def get_left_root(self):
-        return self.root.get_left_child()
+        return self.root.value.get_left_child().value
     
     def get_right_root(self):
-        return self.root.get_right_child()
+        return self.root.value.get_right_child().value
+
+    #Remove after use
+    def get_left_child(self):
+            return self.left
+    
+    def set_left_child(self, node):
+        self.left = node
+
+    def get_right_child(self):
+        return self.right
+    
+    def set_right_child(self, node):
+        self.right = node
+
+    def has_left_child(self):
+        return self.left != None
+        # if self.left != None:
+        #     return True
+        # else: 
+        #     return False
+    
+    def has_right_child(self):
+        return self.right != None
+
+    
 
 
 class Node(object):
@@ -97,8 +122,8 @@ tree = Tree(node0)
 print("Root Node is: ")
 print(tree.get_root().value.value)    
 
-print(tree.get_left_root())
-print(tree.get_right_root())
+print("Left Node is: " + tree.get_left_root())
+print("Right Node is: " + tree.get_right_root())
 
 
 print("------------For randon string input we convert them in to Node type object and work with it:")
@@ -107,6 +132,16 @@ print(tree.get_root().value)
 
 tree = Tree("Wick")
 print(tree.get_root().value)
+
+print("adding left and right child")
+tree.set_left_child("John")
+tree.set_right_child("Junior")
+
+
+
+print("The disadvantages of passing string as node ")
+
+
 print(tree.get_left_root())
 print(tree.get_right_root())
 

@@ -7,26 +7,25 @@
 
 class Tree(object): # class inherits from object
     def __init__(self, node): # constructor
-        self.root = node
+        self.root = Node(node)
 
     def set_root(self, node):
-        self.root = node 
+        self.root = Node(node) 
 
     def get_root(self):
         return self.root.value
+
+    def set_left_child(self, left):
+        self.root.set_left_child(left)        
+
+    def set_right_child(self, right):
+        self.root.set_right_child(right)         
 
     def get_left_of_root(self):
         return self.root.get_left_child()
 
     def get_right_root(self):
         return self.root.get_right_child()
-
-    # def set_left_child(self, left):
-    #     self.root.set_left_child(left)        
-
-    # def set_right_child(self, right):
-    #     self.root.set_right_child(right)     
-    
 
 
 class Node(object):
@@ -42,10 +41,11 @@ class Node(object):
         self.value = value
 
     def get_left_child(self):
-        return self.left
+        return self.left # PJ: We are calling this method as Node object in the Tree class object and the pointer thing is abstracted and 
+        #playing with value directly so we remove value and dont need to conver pointer location to value (Dont have to DO: return self.left.value)
     
     def set_left_child(self, node):
-        self.left = node
+        self.left = node 
 
     def get_right_child(self):
         return self.right
@@ -58,46 +58,43 @@ class Node(object):
     
     def has_right_child(self):
         return self.right != None
-
-    def __str__(self): 
-        return self.value + ' is ' + str(self.value) # PJ: This Solved the issue of user having to type .value at the function call or 
-        # programmer having to worry about the pointer or value abstraction  
         
 #Check User
 
-# Creating Nodes for the Tree
-node0 = Node("Apple")
-node1 = Node("Banana")
-node2 = Node("Orange")
+# # Creating Nodes for the Tree
+# node0 = Node("Apple")
+# node1 = Node("Banana")
+# node2 = Node("Orange")
 
-print("adding left and right child")
-# node 0 will point to node 1
-node0.set_left_child(node1)
-# now lets point node0 to node2
-node0.set_right_child(node2)
+# print("adding left and right child")
+# # node 0 will point to node 1
+# node0.set_left_child(node1)
+# # now lets point node0 to node2
+# node0.set_right_child(node2)
 
-# In Short and sweet representation
-print("\n---In Short and sweet representation---")
-print(f'''
-node 0 :                {node0.get_value()}
-node 0 : left child  :  {node0.get_left_child()}
-node 0 : right child :  {node0.get_right_child()}
-''')
+# # In Short and sweet representation
+# print("\n---In Short and sweet representation---")
+# print(f'''
+# node 0 :                {node0.get_value()}
+# node 0 : left child  :  {node0.get_left_child()}
+# node 0 : right child :  {node0.get_right_child()}
+# ''')
 
 print('\nTree Part')
 print('''------User inputs an actual node. User will create node, set left and right child. \n The purpose of the TREE class is just to point to the head(I mean root)
 # We can access the left and right child as well.''')
-tree = Tree(node0)
+tree = Tree('Amazon')
 print("Root Node is: ")
 print(tree.get_root())    
 
 print("------END OF STORY-----below are experiment")
 
-# print("adding left and right child")
-# # node 0 will point to node 1
-# tree.set_left_child('node1')
-# # now lets point node0 to node2
-# tree.set_right_child('node2')
+
+print("adding left and right child")
+# node 0 will point to node 1
+tree.set_left_child('node1')
+# now lets point node0 to node2
+tree.set_right_child('node2')
 
 print('We can access the Node class\'s get_left_child() getter/setter methods from our tree class by self.root.get_left_child()')
 print('Then we have to define an appropriate defination if we want to access it and call this defination in the Tree class and use it like below: ')

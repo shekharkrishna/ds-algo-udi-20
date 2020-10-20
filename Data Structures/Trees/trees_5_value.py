@@ -19,7 +19,7 @@ class Tree(object): # class inherits from object
         self.root.set_left_child(left)        
 
     def set_right_child(self, right):
-        self.root.set_left_child(right)         
+        self.root.set_right_child(right)         
 
     def get_left_of_root(self):
         return self.root.get_left_child()
@@ -41,10 +41,11 @@ class Node(object):
         self.value = value
 
     def get_left_child(self):
-        return self.left
+        return self.left # PJ: We are calling this method as Node object in the Tree class object and the pointer thing is abstracted and 
+        #playing with value directly so we remove value and dont need to conver pointer location to value (Dont have to DO: return self.left.value)
     
     def set_left_child(self, node):
-        self.left = node
+        self.left = node 
 
     def get_right_child(self):
         return self.right

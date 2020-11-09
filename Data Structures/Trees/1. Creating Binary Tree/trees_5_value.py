@@ -5,31 +5,6 @@
 # Check if left or right child exist
 # Added functions that assign a left child or right child
 
-class Tree(object): # class inherits from object
-    def __init__(self, node): # constructor
-        self.root = Node(node)
-
-    def set_root(self, node):
-        self.root = Node(node) 
-
-    def get_root(self):
-        return self.root # PJ: Either use self.root.value or better generalization and abstraction of pointers by __str__
-
-    def set_left_child(self, left):
-        self.root.set_left_child(left)        
-
-    def set_right_child(self, right):
-        self.root.set_right_child(right)         
-
-    def get_left_of_root(self):
-        return self.root.get_left_child()
-
-    def get_right_root(self):
-        return self.root.get_right_child()
-    
-    def __str__(self):
-        return  'Pointer *--> ' + self.root.value
-
 
 class Node(object):
     def __init__(self, value=None):
@@ -61,57 +36,45 @@ class Node(object):
     
     def has_right_child(self):
         return self.right != None
+
+    def __str__(self): 
+        return  'Pointer *--> ' + self.value  + self.get_value()
+
+
+class Tree(object): # class inherits from object
+    def __init__(self, node): # constructor
+        self.root = Node(node)
+
+    def set_root(self, node):
+        self.root = Node(node) 
+
+    def get_root(self):
+        return self.root # PJ: Either use self.root.value or 
+        # better generalization and abstraction of pointers by __str__ in Node Class not This TREE Class
+
+    def set_left_child(self, left):
+        self.root.set_left_child(left)        
+
+    def set_right_child(self, right):
+        self.root.set_right_child(right)         
+
+    def get_left_of_root(self):
+        return self.root.left
+
+    def get_right_root(self):
+        return self.root.get_right_child()   
+
         
 #Check User
-
-# # Creating Nodes for the Tree
-# node0 = Node("Apple")
-# node1 = Node("Banana")
-# node2 = Node("Orange")
-
-# print("adding left and right child")
-# # node 0 will point to node 1
-# node0.set_left_child(node1)
-# # now lets point node0 to node2
-# node0.set_right_child(node2)
-
-# # In Short and sweet representation
-# print("\n---In Short and sweet representation---")
-# print(f'''
-# node 0 :                {node0.get_value()}
-# node 0 : left child  :  {node0.get_left_child()}
-# node 0 : right child :  {node0.get_right_child()}
-# ''')
-
-print('\nTree Part')
-print('''------User inputs an actual node. User will create node, set left and right child. \n The purpose of the TREE class is just to point to the head(I mean root)
-# We can access the left and right child as well.''')
 tree = Tree('Amazon')
 print("Root Node is: ")
 print(tree.get_root())    
 
-print("------END OF STORY-----below are experiment")
-
-
-print("adding left and right child")
+print("...........adding left and right child")
 # node 0 will point to node 1
 tree.set_left_child('Google')
 # now lets point node0 to node2
 tree.set_right_child('Facebook')
 
-print('We can access the Node class\'s get_left_child() getter/setter methods from our tree class by self.root.get_left_child()')
-print('Then we have to define an appropriate defination if we want to access it and call this defination in the Tree class and use it like below: ')
 print("Left Node is: ", tree.get_left_of_root())
 print("Right Node is: ", tree.get_right_root())
-
-
-# Lets Add more 
-tree.set_left_child('GOOOOGLE')
-print("Left Node is: ", tree.get_left_of_root())
-print("Right Node is: ", tree.get_right_root())
-
-# we cannot access the above left and right nodes directly from the Node class using Tree Class object. 
-# Will give---> AttributeError: 'Tree' object has no attribute 'get_left_child'
-# print("Right Node is: ", tree.get_left_child())
-
-

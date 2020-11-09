@@ -30,10 +30,10 @@ class Node(object):
         return self.right != None
 
     def __repr__(self):
-        return f"Node({self.get_value})"
+        return f"Node({self.get_value()})"
 
     def __str__(self):
-        return f"Node({self.get_value})"
+        return f"Node({self.get_value()})"
 
 class Tree(object): # class inherits from object
     def __init__(self, value=None): # constructor
@@ -41,4 +41,18 @@ class Tree(object): # class inherits from object
 
     def get_root(self):
         return self.root
-    
+
+# Driver 
+# Tree with nodes'
+
+tree = Tree("Google")
+print('                                ',tree.get_root())
+
+tree.get_root().set_left_child(Node("Amazon"))
+print('              Left Child: ', tree.get_root().get_left_child())   
+
+tree.get_root().set_right_child(Node("Microsoft"))
+print('                                            Right Child: ',tree.get_root().get_right_child()) 
+
+tree.get_root().get_left_child().set_left_child(Node("SpaceX"))
+print('Left Left Child: ', tree.get_root().get_left_child().get_left_child())

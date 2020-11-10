@@ -57,11 +57,14 @@ def pre_order(tree):
         visit_order.append(node.get_value())
 
         #traverse  left
-        visit_order.append(node.get_left_child().get_value())
+        #traverse(node.get_left_child())
+        traverse(node.get_left_child())
+            #visit_order.append(node.get_left_child().get_value())            
 
-        #traverse right
-        #traverse  left
-        visit_order.append(node.get_right_child().get_value())
+        #traverse right       
+        traverse(node.get_right_child()) 
+            #visit_order.append(node.get_right_child().get_value())
+
     
     traverse(root)
     
@@ -83,4 +86,4 @@ print('                                            Right Child: ',
 tree.get_root().get_left_child().set_left_child(Node("SpaceX"))
 print('Left Left Child: ', tree.get_root().get_left_child().get_left_child())
 
-print(pre_order(tree))
+pre_order(tree)

@@ -45,6 +45,26 @@ class Tree(object):  # class inherits from object
 
 def pre_order(tree):
     visit_order = list()
+    # Lets start traversing the tree fromt he root
+    root = tree.get_root()
+    # We will make a recursive call to the function. It will have all the stack properties we husseled with default prop of recursive function
+    #traverse(root)
+
+    def traverse(node):
+        # 3 things it does. visit, traverse left, traverse right
+
+        # Visit
+        visit_order.append(node.get_value())
+
+        #traverse  left
+        visit_order.append(node.get_left_child().get_value())
+
+        #traverse right
+        #traverse  left
+        visit_order.append(node.get_right_child().get_value())
+    
+    traverse(root)
+    
     return visit_order
     
 

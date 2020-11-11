@@ -43,34 +43,32 @@ class Tree(object):  # class inherits from object
     def get_root(self):
         return self.root
 
+
 def pre_order(tree):
     visit_order = list()
     # Lets start traversing the tree fromt he root
     root = tree.get_root()
     # We will make a recursive call to the function. It will have all the stack properties we husseled with default prop of recursive function
-    #traverse(root)
+    # traverse(root)
 
     def traverse(node):
         # 3 things it does. visit, traverse left, traverse right
+        if node:  # Same as : if node != None:
+            # Visit
+            visit_order.append(node.get_value())
 
-        # Visit
-        visit_order.append(node.get_value())
+        # traverse  left
+        # traverse(node.get_left_child())
+            traverse(node.get_left_child())
+            # visit_order.append(node.get_left_child().get_value())
 
-        #traverse  left
-        #traverse(node.get_left_child())
-        traverse(node.get_left_child())
-            #visit_order.append(node.get_left_child().get_value())            
+        # traverse right
+            traverse(node.get_right_child())
+            # visit_order.append(node.get_right_child().get_value())
 
-        #traverse right       
-        traverse(node.get_right_child()) 
-            #visit_order.append(node.get_right_child().get_value())
-
-    
     traverse(root)
-    
-    return visit_order
-    
 
+    return visit_order
 
 
 tree = Tree("Google")
@@ -86,4 +84,4 @@ print('                                            Right Child: ',
 tree.get_root().get_left_child().set_left_child(Node("SpaceX"))
 print('Left Left Child: ', tree.get_root().get_left_child().get_left_child())
 
-pre_order(tree)
+print(pre_order(tree))
